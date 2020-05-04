@@ -456,6 +456,7 @@ function createNewID(indexRow, indexColumn, Arr) {
   return Arr.push(idNew2);
 }
 
+//--------------Currently under construction---------------//
 function checkCastling(clickedElement) {
   let king = document.querySelector(`div.figure.${activePlayer}.king`);
   if (clickedElement === king) {
