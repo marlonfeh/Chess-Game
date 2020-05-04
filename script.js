@@ -59,9 +59,9 @@ function changePlayer() {
 function getPossibleMoves(element, elementClassList, player, Arr) {
   let figure = elementClassList[2];
   let initID = elementClassList[3];
-  console.log('getPossibleMoves Current Element', element);
-  console.log('getPossibleMoves Current Figure', figure);
-  console.log('getPossibleMoves Current Player', player);
+  //console.log('getPossibleMoves Current Element', element);
+  //console.log('getPossibleMoves Current Figure', figure);
+  //console.log('getPossibleMoves Current Player', player);
 
   //Clean up old waypoints
   Arr.length = 0;
