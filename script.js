@@ -132,13 +132,6 @@ function kingMoves(indexRow, indexColumn, Arr) {
     let idNew2 = idNew.join('_');
     Arr.push([idNew2]);
   });
-
-  //console.log(Arr, waypoints);
-
-  //---------Check for prohibited Waypoints and delete any
-
-  //---------Check castling option------------
-  checkCastling();
 }
 
 function checkProhibitedMoves(clickedElement) {
@@ -463,78 +456,81 @@ function createNewID(indexRow, indexColumn, Arr) {
   return Arr.push(idNew2);
 }
 
-function checkCastling() {
-  let king, rock1, rock2, idB, idC, idD, idF, idG;
-  if (activePlayer === 'white') {
-    king = document.querySelector('.white.king');
-    //console.log(king);
-    rock1 = document.getElementById('1_a').childNodes[0];
-    //console.log(rock1);
-    rock2 = document.getElementById('1_h').childNodes[0];
-    //console.log(rock2);
-    idB = document.getElementById('1_b').childNodes.length;
-    idC = document.getElementById('1_c').childNodes.length;
-    idD = document.getElementById('1_d').childNodes.length;
-    idF = document.getElementById('1_f').childNodes.length;
-    idG = document.getElementById('1_g').childNodes.length;
+function checkCastling(clickedElement) {
+  let king = document.querySelector(`div.figure.${activePlayer}.king`);
+  if (clickedElement === king) {
+    let rock1, rock2, idB, idC, idD, idF, idG;
+    if (activePlayer === 'white') {
+      console.log('checkCastling King', king);
+      rock1 = document.getElementById('1_a').childNodes[0];
+      console.log('checkCastling Rock1', rock1);
+      rock2 = document.getElementById('1_h').childNodes[0];
+      console.log('checkCastling Rock2', rock2);
+      idB = document.getElementById('1_b').childNodes.length;
+      idC = document.getElementById('1_c').childNodes.length;
+      idD = document.getElementById('1_d').childNodes.length;
+      idF = document.getElementById('1_f').childNodes.length;
+      idG = document.getElementById('1_g').childNodes.length;
 
-    if (
-      king.classList[3] === '1_e' &&
-      rock1 !== undefined &&
-      rock1.classList.contains('rock') &&
-      rock1.classList[3] === '1_a' &&
-      idB === 0 &&
-      idC === 0 &&
-      idD === 0
-    ) {
-      console.log('long castling');
-      addUnderline(rock1);
-    }
+      /*
+      if (
+        king.classList[3] === '1_e' &&
+        rock1 !== undefined &&
+        rock1.classList.contains('rock') &&
+        rock1.classList[3] === '1_a' &&
+        idB === 0 &&
+        idC === 0 &&
+        idD === 0
+      ) {
+        console.log('long castling');
+        addUnderline(rock1);
+      }
 
-    if (
-      king.classList[3] === '1_e' &&
-      rock2 !== undefined &&
-      rock2.classList.contains('rock') &&
-      rock2.classList[3] === '1_h' &&
-      idF === 0 &&
-      idG === 0
-    ) {
-      console.log('short castling');
-      addUnderline(rock2);
-    }
-  } else {
-    king = document.querySelector('.black.king');
-    rock1 = document.getElementById('8_a').childNodes[0];
-    rock2 = document.getElementById('8_h').childNodes[0];
-    idB = document.getElementById('8_b').childNodes.length;
-    idC = document.getElementById('8_c').childNodes.length;
-    idD = document.getElementById('8_d').childNodes.length;
-    idF = document.getElementById('8_f').childNodes.length;
-    idG = document.getElementById('8_g').childNodes.length;
+      if (
+        king.classList[3] === '1_e' &&
+        rock2 !== undefined &&
+        rock2.classList.contains('rock') &&
+        rock2.classList[3] === '1_h' &&
+        idF === 0 &&
+        idG === 0
+      ) {
+        console.log('short castling');
+        addUnderline(rock2);
+      }
+      */
+    } else {
+      rock1 = document.getElementById('8_a').childNodes[0];
+      rock2 = document.getElementById('8_h').childNodes[0];
+      idB = document.getElementById('8_b').childNodes.length;
+      idC = document.getElementById('8_c').childNodes.length;
+      idD = document.getElementById('8_d').childNodes.length;
+      idF = document.getElementById('8_f').childNodes.length;
+      idG = document.getElementById('8_g').childNodes.length;
 
-    if (
-      king.classList[3] === '8_e' &&
-      rock1 !== undefined &&
-      rock1.classList.contains('rock') &&
-      rock1.classList[3] === '8_a' &&
-      idB === 0 &&
-      idC === 0 &&
-      idD === 0
-    ) {
-      console.log('long castling');
-      addUnderline(rock1);
-    }
+      if (
+        king.classList[3] === '8_e' &&
+        rock1 !== undefined &&
+        rock1.classList.contains('rock') &&
+        rock1.classList[3] === '8_a' &&
+        idB === 0 &&
+        idC === 0 &&
+        idD === 0
+      ) {
+        console.log('long castling');
+        addUnderline(rock1);
+      }
 
-    if (
-      king.classList[3] === '8_e' &&
-      rock2 !== undefined &&
-      rock2.classList.contains('rock') &&
-      rock2.classList[3] === '8_h' &&
-      idF === 0 &&
-      idG === 0
-    ) {
-      console.log('short castling');
-      addUnderline(rock2);
+      if (
+        king.classList[3] === '8_e' &&
+        rock2 !== undefined &&
+        rock2.classList.contains('rock') &&
+        rock2.classList[3] === '8_h' &&
+        idF === 0 &&
+        idG === 0
+      ) {
+        console.log('short castling');
+        addUnderline(rock2);
+      }
     }
   }
 }
@@ -824,6 +820,7 @@ game.addEventListener(
         addActive(element);
         getPossibleMoves(element, elementClassList, activePlayer, waypoints);
         checkProhibitedMoves(element);
+        checkCastling(element);
       }
     }
   },
