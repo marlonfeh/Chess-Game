@@ -8,6 +8,7 @@ let activePlayer = 'white';
 let waypoints = [];
 let enemyWaypoints = [];
 let deleteWaypoints = [];
+let 
 
 let matePosition = false;
 const initalPositions = [
@@ -165,7 +166,7 @@ function checkProhibitedMoves(clickedElement) {
       let enemyGreenDots = Array.from(
         document.querySelectorAll('div.green-dot')
       );
-      //let enemyActualWaypoints = enemyGreenDots[0].parentNode;
+      
 
       let enemyActualWaypoints = [];
 
@@ -173,7 +174,7 @@ function checkProhibitedMoves(clickedElement) {
         enemyActualWaypoints.push(e.parentNode);
       });
 
-      //collect all greendots in new array
+      
 
       console.log('enemyGreenDots', enemyGreenDots);
       console.log('enemyActualWaypoints', enemyActualWaypoints);
@@ -230,8 +231,6 @@ function queenMoves(indexRow, indexColumn, Arr) {
 }
 
 function rockMoves(indexRow, indexColumn, Arr) {
-  //------------Check castling option-----------------
-  //checkCastling();
   let indexRow1, indexColumn1, indexRow2, indexColumn2;
   let nestedArr1 = [];
   let nestedArr2 = [];
