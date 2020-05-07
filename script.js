@@ -459,78 +459,93 @@ function createNewID(indexRow, indexColumn, Arr) {
 //--------------Currently under construction---------------//
 function checkCastling(clickedElement) {
   let king = document.querySelector(`div.figure.${activePlayer}.king`);
+  let kingPosition = king.parentNode.id;
   if (clickedElement === king) {
     let rock1, rock2, idB, idC, idD, idF, idG;
+
+    let checkID = function (id) {
+      if (id.childNodes.length > 0) {
+        if (id.childNodes[0].classList.contains('figure')) {
+          return false;
+        } else {
+          return true;
+        }
+      } else {
+        return true;
+      }
+    };
+
     if (activePlayer === 'white') {
-      console.log('checkCastling King', king);
-      rock1 = document.getElementById('1_a').childNodes[0];
-      console.log('checkCastling Rock1', rock1);
-      rock2 = document.getElementById('1_h').childNodes[0];
-      console.log('checkCastling Rock2', rock2);
-      idB = document.getElementById('1_b').childNodes.length;
-      idC = document.getElementById('1_c').childNodes.length;
-      idD = document.getElementById('1_d').childNodes.length;
-      idF = document.getElementById('1_f').childNodes.length;
-      idG = document.getElementById('1_g').childNodes.length;
+      longCastlingPosition = document.getElementById('1_a').childNodes[0];
+      shortCastlingPosition = document.getElementById('1_h').childNodes[0];
+      idB = document.getElementById('1_b');
+      idC = document.getElementById('1_c');
+      idD = document.getElementById('1_d');
+      idF = document.getElementById('1_f');
+      idG = document.getElementById('1_g');
 
-      /*
+      //Long Castling
       if (
-        king.classList[3] === '1_e' &&
-        rock1 !== undefined &&
-        rock1.classList.contains('rock') &&
-        rock1.classList[3] === '1_a' &&
-        idB === 0 &&
-        idC === 0 &&
-        idD === 0
+        kingPosition === '1_e' &&
+        longCastlingPosition !== undefined &&
+        longCastlingPosition.classList.contains('rock') &&
+        longCastlingPosition.classList[3] === '1_a' &&
+        checkID(idB) &&
+        checkID(idC) &&
+        checkID(idD)
       ) {
-        console.log('long castling');
-        addUnderline(rock1);
+        console.log('Long castling');
+        addUnderline(longCastlingPosition);
       }
 
+      //Short Castling
       if (
-        king.classList[3] === '1_e' &&
-        rock2 !== undefined &&
-        rock2.classList.contains('rock') &&
-        rock2.classList[3] === '1_h' &&
-        idF === 0 &&
-        idG === 0
+        kingPosition === '1_e' &&
+        shortCastlingPosition !== undefined &&
+        shortCastlingPosition.classList.contains('rock') &&
+        shortCastlingPosition.classList[3] === '1_h' &&
+        checkID(idF) &&
+        checkID(idG)
       ) {
-        console.log('short castling');
-        addUnderline(rock2);
+        console.log('Short castling');
+        addUnderline(shortCastlingPosition);
       }
-      */
-    } else {
-      rock1 = document.getElementById('8_a').childNodes[0];
-      rock2 = document.getElementById('8_h').childNodes[0];
-      idB = document.getElementById('8_b').childNodes.length;
-      idC = document.getElementById('8_c').childNodes.length;
-      idD = document.getElementById('8_d').childNodes.length;
-      idF = document.getElementById('8_f').childNodes.length;
-      idG = document.getElementById('8_g').childNodes.length;
+    }
 
+    if (activePlayer === 'black') {
+      longCastlingPosition = document.getElementById('8_a').childNodes[0];
+      shortCastlingPosition = document.getElementById('8_h').childNodes[0];
+      idB = document.getElementById('8_b');
+      idC = document.getElementById('8_c');
+      idD = document.getElementById('8_d');
+      idF = document.getElementById('8_f');
+      idG = document.getElementById('8_g');
+
+      //Long Castling
       if (
-        king.classList[3] === '8_e' &&
-        rock1 !== undefined &&
-        rock1.classList.contains('rock') &&
-        rock1.classList[3] === '8_a' &&
-        idB === 0 &&
-        idC === 0 &&
-        idD === 0
+        kingPosition === '8_e' &&
+        longCastlingPosition !== undefined &&
+        longCastlingPosition.classList.contains('rock') &&
+        longCastlingPosition.classList[3] === '8_a' &&
+        checkID(idB) &&
+        checkID(idC) &&
+        checkID(idD)
       ) {
-        console.log('long castling');
-        addUnderline(rock1);
+        console.log('Long castling');
+        addUnderline(longCastlingPosition);
       }
 
+      //Short Castling
       if (
-        king.classList[3] === '8_e' &&
-        rock2 !== undefined &&
-        rock2.classList.contains('rock') &&
-        rock2.classList[3] === '8_h' &&
-        idF === 0 &&
-        idG === 0
+        kingPosition === '8_e' &&
+        shortCastlingPosition !== undefined &&
+        shortCastlingPosition.classList.contains('rock') &&
+        shortCastlingPosition.classList[3] === '8_h' &&
+        checkID(idF) &&
+        checkID(idG)
       ) {
-        console.log('short castling');
-        addUnderline(rock2);
+        console.log('Short castling');
+        addUnderline(shortCastlingPosition);
       }
     }
   }
