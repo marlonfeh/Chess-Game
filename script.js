@@ -8,9 +8,9 @@ let activePlayer = 'white';
 let waypoints = [];
 let enemyWaypoints = [];
 let deleteWaypoints = [];
-let 
-
 let matePosition = false;
+let whiteCastling = true;
+let blackCastling = true;
 const initalPositions = [
   '1_a',
   '1_b',
@@ -166,15 +166,12 @@ function checkProhibitedMoves(clickedElement) {
       let enemyGreenDots = Array.from(
         document.querySelectorAll('div.green-dot')
       );
-      
 
       let enemyActualWaypoints = [];
 
       enemyGreenDots.forEach((e) => {
         enemyActualWaypoints.push(e.parentNode);
       });
-
-      
 
       console.log('enemyGreenDots', enemyGreenDots);
       console.log('enemyActualWaypoints', enemyActualWaypoints);
@@ -214,7 +211,6 @@ function checkProhibitedMoves(clickedElement) {
 function deleteProhibitedWaypoints() {
   deleteWaypoints.forEach((e) => {
     waypoints.forEach((array) => {
-      //item = item.filter((i) => i !== e);
       let index = array.indexOf(e);
       while (index > -1) {
         array.splice(index, 1);
@@ -294,14 +290,9 @@ function knightMoves(indexRow, indexColumn, Arr) {
     let idNew2 = idNew.join('_');
     Arr.push([idNew2]);
   });
-
-  //---------Check castling option------------
-  //checkCastling();
 }
 
 function bishopMoves(indexRow, indexColumn, Arr) {
-  //console.log(indexRow);
-  //console.log(indexColumn);
   let indexRow1,
     indexColumn1,
     indexRow2,
@@ -392,7 +383,9 @@ function pawnAttacks(indexRow, indexColumn, player) {
       [+1, -1],
       [+1, +1],
     ];
-  } else {
+  }
+
+  if (player === 'black') {
     possibleAttacks = [
       [-1, -1],
       [-1, +1],
@@ -412,12 +405,9 @@ function pawnAttacks(indexRow, indexColumn, player) {
     attackFields.push([idNew2]);
   });
 
-  //console.log(attackFields);
-
   attackFields.forEach((e) => {
     let element = document.getElementById(e);
     if (element !== null) {
-      //console.log(element);
       //Check if child div exists
       if (element.childNodes.length) {
         //Check if child div is not a friendly piece
@@ -434,7 +424,6 @@ function pawnAttacks(indexRow, indexColumn, player) {
 
 function addPawnMarkings(Arr) {
   for (const higherElement of Arr) {
-    //console.log(e);
     for (const lowerElement of higherElement) {
       let element = document.getElementById(lowerElement);
       if (element.childNodes.length) {
@@ -455,7 +444,6 @@ function createNewID(indexRow, indexColumn, Arr) {
   return Arr.push(idNew2);
 }
 
-//--------------Currently under construction---------------//
 function checkCastling(clickedElement) {
   let king = document.querySelector(`div.figure.${activePlayer}.king`);
   let kingPosition = king.parentNode.id;
@@ -474,7 +462,7 @@ function checkCastling(clickedElement) {
       }
     };
 
-    if (activePlayer === 'white') {
+    if (activePlayer === 'white' && whiteCastling === true) {
       longCastlingPosition = document.getElementById('1_a').childNodes[0];
       shortCastlingPosition = document.getElementById('1_h').childNodes[0];
       idB = document.getElementById('1_b');
@@ -511,7 +499,7 @@ function checkCastling(clickedElement) {
       }
     }
 
-    if (activePlayer === 'black') {
+    if (activePlayer === 'black' && blackCastling === true) {
       longCastlingPosition = document.getElementById('8_a').childNodes[0];
       shortCastlingPosition = document.getElementById('8_h').childNodes[0];
       idB = document.getElementById('8_b');
@@ -592,20 +580,20 @@ function movePieces(element, elementClassList) {
     removeElement(activeFigure);
     targetDiv.appendChild(activeFigure);
     activeDiv[0].parentNode.appendChild(rook);
+    if (activePlayer === 'white') {
+      whiteCastling = false;
+    }
+    if (activePlayer === 'black') {
+      blackCastling = false;
+    }
     movePiecesSubsequent();
   }
-
-  //console.log('activeFigure 2', activeFigure);
-  //console.log(activeFigure.classList.contains('king'));
 }
 
 function checkEnemyMate() {
   let notActivePlayer = activePlayer === 'white' ? 'black' : 'white';
   let enemyKing = document.querySelector(`div.figure.${notActivePlayer}.king`);
-  //console.log('checkMate enemyKing', enemyKing);
-
   let pieces = document.querySelectorAll(`div.figure.${activePlayer}`);
-  //console.log('checkMate friendlyPieces', pieces);
 
   for (const element of pieces) {
     getPossibleMoves(
@@ -625,13 +613,11 @@ function checkEnemyMate() {
     removeMarkings();
 
     if (matePosition) {
-      //console.log(enemyKing.parentNode, 'Enemy King');
       addRedBorder(enemyKing);
       console.log(element);
       break;
     }
   }
-  //console.log('CheckMate Waypoints', waypoints);
 }
 
 function setAllPieces() {
@@ -722,14 +708,13 @@ function addRedBorder(element) {
   );
 }
 
-//Accepts only Nested Arrays!
+//Arr must have nested Arrays!
 function addMarkings(Arr) {
   for (const higherElement of Arr) {
     for (const lowerElement of higherElement) {
       let element = document.getElementById(lowerElement);
       if (element !== null) {
         //Check if child div exists
-        //console.log('Element Childnodes', element.childNodes);
         if (element.childNodes.length) {
           //Check if child div is not a friendly piece
           if (element.children[0].classList[1] !== activePlayer) {
@@ -804,7 +789,6 @@ game.addEventListener(
 
     let activeDiv = document.querySelectorAll('div.green-border');
     let king = document.querySelector(`div.figure.${activePlayer}.king`);
-    //console.log('Check for Mate position', king.parentNode);
 
     if (matePosition) {
       console.log('King in Mate');
@@ -849,4 +833,6 @@ newGame.addEventListener('click', (e) => {
   setAllPieces();
   activePlayer = 'white';
   matePosition = false;
+  whiteCastling = true;
+  blackCastling = true;
 });
