@@ -12,78 +12,136 @@
       <div class="btn-container">
         <button id="new-game" class="btn">New Game</button>
       </div>
-      <div id="game" class="game">
-        <div id="8_a" class="div1 cell light brd-left brd-top top-left"><div class="figure black rock 8_a">&#9820</div></div>
-        <div id="8_b" class="div2 cell dark brd-top"></div>
-        <div id="8_c" class="div3 cell light brd-top"></div>
-        <div id="8_d" class="div4 cell dark brd-top"></div>
-        <div id="8_e" class="div5 cell light brd-top"><div class="figure black king 8_e">&#9818</div></div>
-        <div id="8_f" class="div6 cell dark brd-top"></div>
-        <div id="8_g" class="div7 cell light brd-top"><div class="figure black knight">&#9822</div></div>
-        <div id="8_h" class="div8 cell dark brd-top brd-right top-right"><div class="figure black rock 8_h">&#9820</div></div>
+      <div class="container">
+        <!--Active Flag to change visibility via JS?-->
+        <div class="sidebar white active">
+          <div class="rowOne">
+            <div class="whiteKing">&#9812</div>
+            <div class="counter">x 0</div>
+          </div>
+          <div class="rowTwo">
+            <div class="whiteQueen">&#9813</div>
+            <div class="counter">x 0</div>
+          </div>
+          <div class="rowThree">
+            <div class="whiteRock">&#9814</div>
+            <div class="counter">x 0</div>
+          </div>
+          <div class="rowFour">
+            <div class="whiteKnight">&#9816</div>
+            <div class="counter">x 0</div>
+          </div>
+          <div class="rowFive">
+            <div class="whiteBishop">&#9815</div>
+            <div class="counter">x 0</div>
+          </div>
+          <div class="rowSix">
+            <div class="whitePawn">&#9817</div>
+            <div class="counter">x 0</div>
+          </div>
+        </div>
 
-        <div id="7_a" class="div9 cell dark brd-left"></div>
-        <div id="7_b" class="div10 cell light"></div>
-        <div id="7_c" class="div11 cell dark"></div>
-        <div id="7_d" class="div12 cell light"></div>
-        <div id="7_e" class="div13 cell dark"></div>
-        <div id="7_f" class="div14 cell light"></div>
-        <div id="7_g" class="div15 cell dark"></div>
-        <div id="7_h" class="div16 cell light brd-right"></div>
 
-        <div id="6_a" class="div17 cell light brd-left"></div>
-        <div id="6_b" class="div18 cell dark"></div>
-        <div id="6_c" class="div19 cell light"></div>
-        <div id="6_d" class="div20 cell dark"></div>
-        <div id="6_e" class="div21 cell light"></div>
-        <div id="6_f" class="div22 cell dark"></div>
-        <div id="6_g" class="div23 cell light"></div>
-        <div id="6_h" class="div24 cell dark brd-right"></div>
-
-        <div id="5_a" class="div25 cell dark brd-left"></div>
-        <div id="5_b" class="div26 cell light"></div>
-        <div id="5_c" class="div27 cell dark"></div>
-        <div id="5_d" class="div28 cell light"></div>
-        <div id="5_e" class="div29 cell dark"></div>
-        <div id="5_f" class="div30 cell light"></div>
-        <div id="5_g" class="div31 cell dark"></div>
-        <div id="5_h" class="div32 cell light brd-right"></div>
-
-        <div id="4_a" class="div33 cell light brd-left"></div>
-        <div id="4_b" class="div34 cell dark"></div>
-        <div id="4_c" class="div35 cell light"></div>
-        <div id="4_d" class="div36 cell dark"></div>
-        <div id="4_e" class="div37 cell light"></div>
-        <div id="4_f" class="div38 cell dark"></div>
-        <div id="4_g" class="div39 cell light"></div>
-        <div id="4_h" class="div40 cell dark brd-right"></div>
-
-        <div id="3_a" class="div41 cell dark brd-left"></div>
-        <div id="3_b" class="div42 cell light"></div>
-        <div id="3_c" class="div43 cell dark"></div>
-        <div id="3_d" class="div44 cell light"></div>
-        <div id="3_e" class="div45 cell dark"></div>
-        <div id="3_f" class="div46 cell light"></div>
-        <div id="3_g" class="div47 cell dark"></div>
-        <div id="3_h" class="div48 cell light brd-right"></div>
-
-        <div id="2_a" class="div49 cell light brd-left"></div>
-        <div id="2_b" class="div50 cell dark"></div>
-        <div id="2_c" class="div51 cell light"></div>
-        <div id="2_d" class="div52 cell dark"><div class="figure white bishop">&#9815</div></div>
-        <div id="2_e" class="div53 cell light"></div>
-        <div id="2_f" class="div54 cell dark"></div>
-        <div id="2_g" class="div55 cell light"></div>
-        <div id="2_h" class="div56 cell dark brd-right"></div>
-
-        <div id="1_a" class="div57 cell dark btm-left"><div class="figure white rock 1_a">&#9814</div></div>
-        <div id="1_b" class="div58 cell light brd-btm"></div>
-        <div id="1_c" class="div59 cell dark brd-btm"></div>
-        <div id="1_d" class="div60 cell light brd-btm"></div>
-        <div id="1_e" class="div61 cell dark brd-btm"><div class="figure white king 1_e">&#9812</div></div>
-        <div id="1_f" class="div62 cell light brd-btm"></div>
-        <div id="1_g" class="div63 cell dark brd-btm"></div>
-        <div id="1_h" class="div64 cell light btm-right"><div class="figure white rock 1_h">&#9814</div></div>
+        <div id="game" class="game">
+          <div id="8_a" class="div1 cell light brd-left brd-top top-left"><div class="figure black rock 8_a">&#9820</div></div>
+          <div id="8_b" class="div2 cell dark brd-top"></div>
+          <div id="8_c" class="div3 cell light brd-top"></div>
+          <div id="8_d" class="div4 cell dark brd-top"></div>
+          <div id="8_e" class="div5 cell light brd-top"><div class="figure black king 8_e">&#9818</div></div>
+          <div id="8_f" class="div6 cell dark brd-top"></div>
+          <div id="8_g" class="div7 cell light brd-top"><div class="figure black knight">&#9822</div></div>
+          <div id="8_h" class="div8 cell dark brd-top brd-right top-right"><div class="figure black rock 8_h">&#9820</div></div>
+  
+          <div id="7_a" class="div9 cell dark brd-left"></div>
+          <div id="7_b" class="div10 cell light"></div>
+          <div id="7_c" class="div11 cell dark"></div>
+          <div id="7_d" class="div12 cell light"></div>
+          <div id="7_e" class="div13 cell dark"></div>
+          <div id="7_f" class="div14 cell light"></div>
+          <div id="7_g" class="div15 cell dark"></div>
+          <div id="7_h" class="div16 cell light brd-right"></div>
+  
+          <div id="6_a" class="div17 cell light brd-left"></div>
+          <div id="6_b" class="div18 cell dark"></div>
+          <div id="6_c" class="div19 cell light"></div>
+          <div id="6_d" class="div20 cell dark"></div>
+          <div id="6_e" class="div21 cell light"></div>
+          <div id="6_f" class="div22 cell dark"></div>
+          <div id="6_g" class="div23 cell light"></div>
+          <div id="6_h" class="div24 cell dark brd-right"></div>
+  
+          <div id="5_a" class="div25 cell dark brd-left"></div>
+          <div id="5_b" class="div26 cell light"></div>
+          <div id="5_c" class="div27 cell dark"></div>
+          <div id="5_d" class="div28 cell light"></div>
+          <div id="5_e" class="div29 cell dark"></div>
+          <div id="5_f" class="div30 cell light"></div>
+          <div id="5_g" class="div31 cell dark"></div>
+          <div id="5_h" class="div32 cell light brd-right"></div>
+  
+          <div id="4_a" class="div33 cell light brd-left"></div>
+          <div id="4_b" class="div34 cell dark"></div>
+          <div id="4_c" class="div35 cell light"></div>
+          <div id="4_d" class="div36 cell dark"></div>
+          <div id="4_e" class="div37 cell light"></div>
+          <div id="4_f" class="div38 cell dark"></div>
+          <div id="4_g" class="div39 cell light"></div>
+          <div id="4_h" class="div40 cell dark brd-right"></div>
+  
+          <div id="3_a" class="div41 cell dark brd-left"></div>
+          <div id="3_b" class="div42 cell light"></div>
+          <div id="3_c" class="div43 cell dark"></div>
+          <div id="3_d" class="div44 cell light"></div>
+          <div id="3_e" class="div45 cell dark"></div>
+          <div id="3_f" class="div46 cell light"></div>
+          <div id="3_g" class="div47 cell dark"></div>
+          <div id="3_h" class="div48 cell light brd-right"></div>
+  
+          <div id="2_a" class="div49 cell light brd-left"></div>
+          <div id="2_b" class="div50 cell dark"></div>
+          <div id="2_c" class="div51 cell light"></div>
+          <div id="2_d" class="div52 cell dark"><div class="figure white bishop">&#9815</div></div>
+          <div id="2_e" class="div53 cell light"></div>
+          <div id="2_f" class="div54 cell dark"></div>
+          <div id="2_g" class="div55 cell light"></div>
+          <div id="2_h" class="div56 cell dark brd-right"></div>
+  
+          <div id="1_a" class="div57 cell dark btm-left"><div class="figure white rock 1_a">&#9814</div></div>
+          <div id="1_b" class="div58 cell light brd-btm"></div>
+          <div id="1_c" class="div59 cell dark brd-btm"></div>
+          <div id="1_d" class="div60 cell light brd-btm"></div>
+          <div id="1_e" class="div61 cell dark brd-btm"><div class="figure white king 1_e">&#9812</div></div>
+          <div id="1_f" class="div62 cell light brd-btm"></div>
+          <div id="1_g" class="div63 cell dark brd-btm"></div>
+          <div id="1_h" class="div64 cell light btm-right"><div class="figure white rock 1_h">&#9814</div></div>
+        </div>
+        <div class="sidebar black">
+          <div class="sidebar white active">
+            <div class="rowOne">
+              <div class="blackKing">&#9818</div>
+              <div class="counter">x 0</div>
+            </div>
+            <div class="rowTwo">
+              <div class="blackQueen">&#9819</div>
+              <div class="counter">x 0</div>
+            </div>
+            <div class="rowThree">
+              <div class="blackRock">&#9820</div>
+              <div class="counter">x 0</div>
+            </div>
+            <div class="rowFour">
+              <div class="blackKnight">&#9822</div>
+              <div class="counter">x 0</div>
+            </div>
+            <div class="rowFive">
+              <div class="blackBishop">&#9821</div>
+              <div class="counter">x 0</div>
+            </div>
+            <div class="rowSix">
+              <div class="blackPawn">&#9823</div>
+              <div class="counter">x 0</div>
+            </div>
+        </div>
       </div>
     </div>
     <script src="script.js"></script>

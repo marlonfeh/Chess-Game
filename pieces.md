@@ -15,3 +15,21 @@ Black Figures
 <div class="figure black knight">&#9822</div>
 <div class="figure black bishop">&#9821</div>
 <div class="figure black pawn 7_a">&#9823</div>
+
+Caputured Pieces White
+
+<div class="whiteKing">&#9812</div>
+<div class="whiteQueen">&#9813</div>
+<div class="whiteRock">&#9814</div>
+<div class="whiteKnight">&#9816</div>
+<div class="whiteBishop">&#9815</div>
+<div class="whitePawn">&#9817</div>
+
+Caputured Pieces Black
+
+<div class="blackKing">&#9818</div>
+<div class="blackQueen">&#9819</div>
+<div class="blackRock">&#9820</div>
+<div class="blackKnight">&#9822</div>
+<div class="blackBishop">&#9821</div>
+<div class="blackPawn">&#9823</div>
