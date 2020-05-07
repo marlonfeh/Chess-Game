@@ -18,9 +18,9 @@ html,
 body {
   color: var(--color);
   font-family: 'Roboto', sans-serif;
-  font-size: 1.7rem;
   margin: 0;
   padding: 0;
+  font-size: 1.7rem;
 }
 
 .wrapper {
@@ -32,7 +32,7 @@ body {
 }
 
 .heading {
-  margin: 50px 0 0 0;
+  margin: 40px 0 0 0;
   font-size: 1.4rem;
 }
 
@@ -43,7 +43,7 @@ body {
   color: #fff;
   font-family: 'Roboto', sans-serif;
   font-size: 0.7rem;
-  margin: 40px;
+  margin: 35px;
   padding: 10px 30px;
   transition: all 0.2s ease-in-out;
 }
@@ -64,61 +64,6 @@ body {
   border-radius: var(--border-radius);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-
-.cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: blue;
-  color: var(--dark-color);
-  height: 80px;
-  line-height: 75px;
-  width: 80px;
-  position: relative;
-}
-
-.dark {
-  background-color: var(--dark-grey);
-}
-
-.light {
-  background-color: var(--light-grey);
-}
-
-/*
-.brd-left {
-  border-left: 4px solid var(--dark-color);
-}
-
-.brd-top {
-  border-top: 4px solid var(--dark-color);
-}
-
-.brd-right {
-  border-right: 4px solid var(--dark-color);
-}
-
-.brd-btm {
-  border-bottom: 4px solid var(--dark-color);
-}
-
-.top-left {
-  border-top-left-radius: var(--border-radius);
-}
-
-.top-right {
-  border-top-right-radius: var(--border-radius);
-}
-
-.btm-left {
-  border-bottom-left-radius: var(--border-radius);
-}
-
-.btm-right {
-  border-bottom-right-radius: var(--border-radius);
-}
-
-*/
 
 .div1 {
   grid-area: 1 / 1 / 2 / 2;
@@ -313,12 +258,31 @@ body {
   grid-area: 8 / 8 / 9 / 9;
 }
 
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  color: var(--dark-color);
+  height: 80px;
+  line-height: 75px;
+  width: 80px;
+  position: relative;
+}
+
+.dark {
+  background-color: var(--dark-grey);
+}
+
+.light {
+  background-color: var(--light-grey);
+}
+
 .figure {
   cursor: pointer;
   padding-bottom: 5px;
   width: 100%;
   text-align: center;
-  /*z-index: 2;*/
 }
 
 .green-dot {
@@ -347,7 +311,7 @@ body {
   height: 3px;
   left: 20px;
   position: absolute;
-  top: 70px;
+  top: 65px;
   width: 40px;
 }
 
@@ -361,9 +325,61 @@ body {
   width: 70px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-height: 780px) {
+  body {
+    font-size: 1.6rem;
+  }
+
+  .heading {
+    margin: 25px 0 0 0;
+  }
+
+  .btn {
+    margin: 25px;
+  }
+
   .cell {
-    width: 40px;
-    height: 40px;
+    height: 71.5px;
+    width: 71.5px;
+    line-height: 67.5px;
+  }
+
+  .figure {
+    padding-bottom: 4px;
+  }
+
+  .green-dot {
+    border-radius: 13.5px;
+    height: 27px;
+    left: 22.5px;
+    width: 27px;
+    top: 22.5px;
+  }
+
+  .green-border {
+    border-radius: 10px;
+    height: 63px;
+    left: 4.5px;
+    top: 4.5px;
+    width: 63px;
+  }
+
+  .green-underline {
+    height: 3px;
+    left: 18px;
+    top: 63px;
+    width: 36px;
+  }
+
+  .red-border {
+    border: 3px solid var(--attack);
+    border-radius: 10px;
+    height: 63px;
+    left: 4.5px;
+    position: absolute;
+    top: 4.5px;
+    width: 63px;
   }
 }
+
+/*--------Add media query for max-width----------*/
