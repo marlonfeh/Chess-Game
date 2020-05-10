@@ -2,6 +2,8 @@
 
 const newGame = document.getElementById('new-game');
 const game = document.getElementById('game');
+const sidebarWhite = document.getElementById('sidebar-white');
+const sidebarBlack = document.getElementById('sidebar-black');
 const rows = ['1', '2', '3', '4', '5', '6', '7', '8'];
 const columns = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 let activePlayer = 'white';
@@ -550,6 +552,7 @@ function movePieces(element, elementClassList) {
   function movePiecesSubsequent() {
     removeMarkings();
     checkEnemyMate();
+    checkPawnPromotion();
     changePlayer();
   }
 
@@ -560,6 +563,7 @@ function movePieces(element, elementClassList) {
   if (elementClassList[0] === 'red-border') {
     //remove attacked figure
     let enemyPiece = element.parentNode.childNodes[1];
+    displayCapturedPieces(enemyPiece);
     removeElement(enemyPiece);
     removeElement(activeFigure);
     targetDiv.appendChild(activeFigure);
@@ -618,6 +622,21 @@ function checkEnemyMate() {
       break;
     }
   }
+}
+
+function checkPawnPromotion() {
+  //If Piece is pawn
+  //If piece is white pawn
+  //If white pawn reached row 8
+  //If piece is black pawn
+  //If white pawn reached row 1
+  //If sidebar not active make sidebar active
+  //Set Flag of Pawnpromotion
+  //Possibly with location of relevant pawn
+}
+
+function executePawnPromotion() {
+  //Switch Pieces
 }
 
 function setAllPieces() {
@@ -774,6 +793,43 @@ function removeAllPieces() {
   });
 }
 
+function displayCapturedPieces(capturedPiece) {
+  //Info about captured piece
+  //Which player
+  //Which piece
+
+  console.log('displayCapturedPieces', capturedPiece);
+
+  //Get player
+  let player = capturedPiece.classList[1];
+  //Get Piece type
+  let piece = capturedPiece.classList[2];
+  console.log('displayCapturedPieces', player);
+  console.log('displayCapturedPieces', piece);
+
+  //Get sidebar
+  let sidebar = document.querySelector(`${player}`);
+}
+
+function sidebarEvents(event) {
+  console.log(event.target);
+
+  //Consider event listener if flag for pawn promotion is set
+  //use function execute pawnpromotion
+
+  targetParent2 = event.target.parentNode.parentNode;
+  if (targetParent2.classList.contains('sidebar')) {
+    if (targetParent2.classList.contains('white')) {
+      console.log('white');
+      //pawnPromotion()
+    }
+    if (targetParent2.classList.contains('white')) {
+      console.log('black');
+      //pawnPromotion()
+    }
+  }
+}
+
 /* --------------------Event Listeners-------------------- */
 
 // Listen to all clicks on div.game
@@ -836,3 +892,19 @@ newGame.addEventListener('click', (e) => {
   whiteCastling = true;
   blackCastling = true;
 });
+
+sidebarWhite.addEventListener(
+  'click',
+  (e) => {
+    sidebarEvents(e);
+  },
+  false
+);
+
+sidebarBlack.addEventListener(
+  'click',
+  (e) => {
+    sidebarEvents(e);
+  },
+  false
+);
