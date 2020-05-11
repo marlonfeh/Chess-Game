@@ -808,7 +808,7 @@ function displayCapturedPieces(capturedPiece) {
   console.log('displayCapturedPieces', piece);
 
   //Get sidebar
-  let sidebar = document.querySelector(`${player}`);
+  //let sidebar = document.querySelector(`${player}`);
 }
 
 function sidebarEvents(event) {
